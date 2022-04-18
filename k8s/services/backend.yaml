@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: backend
+  namespace: mini-olx
+spec:
+  type: NodePort
+  ports:
+    - name: backend-service
+      protocol: TCP
+      port: 4040
+      targetPort: 4040
+      nodePort: 31002
+  selector:
+    app: backend

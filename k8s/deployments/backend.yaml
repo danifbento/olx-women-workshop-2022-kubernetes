@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+  namespace: mini-olx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: aipms/olx-women-workshop-2022-backend:v2
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          ports:
+            - containerPort: 4040
+              name: backend
+          env: 
+            - name: DB_HOST
+              value: db
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: ""
+            - name: DB_NAME
+              value: mini_olx
+            - name: IMAGE_PATH
+              value: http://127.0.0.1:31002
+          volumeMounts:
+            - name: backend-persistent-storage
+              mountPath: static/images
+      volumes:
+        - name: backend-persistent-storage
+          persistentVolumeClaim:
+            claimName: backend-pv-claim
