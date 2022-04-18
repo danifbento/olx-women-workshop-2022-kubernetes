@@ -14,4 +14,3 @@
 [OLX Women Workshop 2022](https://github.com/isapms/olx-women-workshop-2022-all)  
 [OLX Women Workshop 2022 Frontend](https://github.com/franfaccin/olx-women-workshop-2022-frontend)  
 [OLX Women Workshop 2022 Backend](https://github.com/isapms/olx-women-workshop-2022-backend)  
-[Mini OLX](https://git.naspersclassifieds.com/isabel.santos/mini-olx)
